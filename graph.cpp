@@ -193,7 +193,8 @@ int Graph::ShortestPath(int start, int destination)
     while(!q.empty())
     {
         // lambda capture 
-        auto [distance , node] = q.top();
+        int distance = q.top().first;
+        int node = q.top().second;
         q.pop();
         if (node == destination) break;
         for (auto neighbour : adjList[node])
@@ -461,7 +462,8 @@ int WeightedGraph::ShortestPath(int start, int destination)
     q.push(make_pair(0, start));
     while(!q.empty())
     {
-        auto [distance , node] = q.top();
+        int distance = q.top().first;
+        int node = q.top().second;
         q.pop();
         if (node == destination) break;
         for (auto neighbour : adjList[node])
@@ -489,7 +491,8 @@ vector<pair<int,int>> WeightedGraph::MinimumSpanningTree()
     q.push(make_pair(0, 0));
     while(!q.empty())
     {
-        auto [distance , node] = q.top();
+        int distance = q.top().first;
+        int node = q.top().second;
         q.pop();
         if (included[node] == 1) continue;
         included[node] = 1;
